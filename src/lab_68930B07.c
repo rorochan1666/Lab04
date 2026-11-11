@@ -12,7 +12,18 @@ Re-mould it nearer to the Heart's Desire!";
 
 int strindex(const char source[], char pattern[])
 {
-    // TODO: write your code here
+    int pos = -1;                /* -1 means not found */
+    const char *p   = source;
+    const char *hit;
+
+    if (pattern[0] == '\0')      /* empty pattern */
+        return -1;
+
+    while ((hit = strstr(p, pattern)) != NULL) {
+        pos = (int)(hit - source);
+        p   = hit + 1;
+    }
+    return pos;
 }
 
 // DO NOT change the code below
@@ -30,4 +41,3 @@ int main(void)
 }
 #endif
 // DO NOT change the code above
-
